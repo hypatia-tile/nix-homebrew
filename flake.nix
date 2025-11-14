@@ -11,17 +11,25 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, neovim-nightly-overlay, ... }:
     {
       darwinConfigurations."Kazukis-MacBook-Air" = nix-darwin.lib.darwinSystem {
         modules = [
           ./configuration.nix
           # Integrate Home Manager as a module
           home-manager.darwinModules.home-manager
-          # Configure Home Manager
           {
+            # Make neovim from neovim-nightly-overlay
+            nixpkgs.overlays = [
+              neovim-nightly-overlay.overlays.default
+            ];
+            # Configure Home Manager
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
@@ -30,6 +38,8 @@
             home-manager.users.kazukishinohara = import ./home.nix;
           }
         ];
+
+        specialArgs = { inherit inputs; };
       };
     };
 }

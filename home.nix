@@ -5,6 +5,8 @@
   home.homeDirectory = "/Users/kazukishinohara";
   home.stateVersion = "25.05"; # pick the current HM release or similar
 
+  xdg.enable = true;
+
   programs.home-manager.enable = true;
 
   # user-level packages (no sudo):
@@ -13,10 +15,9 @@
     fd
     ripgrep
     bat
-    # neovim
+    neovim
   ];
 
-  xdg.enable = true;
 
   # example: enable some HM-managed programs
   programs.git = {
