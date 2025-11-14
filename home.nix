@@ -25,18 +25,26 @@
   ######################
   programs.tmux = {
     enable = true;
+    # Use zsh as the default shell inside tmux
+    shell = "${pkgs.zsh}/bin/zsh";
+    # Nice default
     mouse = true;
     baseIndex = 1;
     clock24 = true;
     historyLimit = 10000;
+    # Recommended: fast, responsive escape-time
+    escapeTime = 10;
     extraConfig = ''
-      unbind C-b
-      set -g prefix C-q
+      set -g status-style "bg=colour236 fg=white"
+      set -g pane-border-style "fg=colour238"
+      set -g pane-active-border-style "fg=colour39"
 
-      bind-key -n M-Up resize-pane -U 3
-      bind-key -n M-Down resize-pane -D 3
-      bind-key -n M-Left resize-pane -L 3
-      bind-key -n M-Right resize-pane -R 3
+        unbind C-b
+        set -g prefix C-q
+        bind-key -n M-Up resize-pane -U 3
+        bind-key -n M-Down resize-pane -D 3
+        bind-key -n M-Left resize-pane -L 3
+        bind-key -n M-Right resize-pane -R 3
     '';
   };
 
