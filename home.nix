@@ -16,6 +16,8 @@
     ripgrep
     bat
     neovim
+    tmux
+    alacritty
   ];
 
 
