@@ -21,6 +21,12 @@
 
   system.stateVersion = 6;
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+  users.users.kazukishinohara = {
+    name = "kazukishinohara";
+    home = "/Users/kazukishinohara";
+    shell = pkgs.zsh; # or omit if you prefer the system default shell
+  };
   ########################################
   # macOS system settings via nix-darwin #
   ########################################
