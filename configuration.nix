@@ -1,17 +1,25 @@
+{ pkgs, ... }:
 {
-  description = "Shino's darwin system";
+  # Turn off nix-darwin's own Nix management (only if we still using Determinate)
+  nix.enable = false;
 
-  inputs = {
-    # Use `github:NixOS/nixpkgs/nixpkgs-25.05-darwin` to use Nixpkgs 25.05.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Use `github:nix-darwin/nix-darwin/nix-darwin-25.05` to use Nixpkgs 25.05.
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-  };
+  environment.systemPackages = [
+    pkgs.vim
+    pkgs.git
+    pkgs.htop
+  ];
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }: {
-    darwinConfigurations."Kazukis-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      modules = [ ./configuration.nix ];
-    };
-  };
+  # Necessary for using flakes on this system.
+  nix.settings.experimental-features = [ "nix-command flakes" ];
+
+  # Enable alternative shell support in nix-darwin
+  programs.zsh.enable = true;
+
+  # Drop ocnfiguration Revision for now to keep it simple
+  # (using `self` in an external module requires specialArgs).
+  # system.configurationRevision = self.rev or self.dirtyRev or null;
+
+  system.stateVersion = 6;
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
 }
