@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   home.username = "kazukishinohara";
@@ -16,6 +16,8 @@
     # neovim
   ];
 
+  xdg.enable = true;
+
   # example: enable some HM-managed programs
   programs.git = {
     enable = true;
@@ -28,6 +30,6 @@
   };
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
   };
 }
