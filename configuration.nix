@@ -21,5 +21,22 @@
 
   system.stateVersion = 6;
   nixpkgs.hostPlatform = "aarch64-darwin";
+  ########################################
+  # macOS system settings via nix-darwin #
+  ########################################
+  # Make Dock auto-hide and speed it up
+  # system.defaults.dock.autohide = true;
+  # system.defaults.dock.autohide-delay = 0.0;
+  # system.defaults.dock.autohide-time-modifier = 0.15;
+
+  # Faster key repeat (you can tweak these)
+  # system.defaults.NSGlobalDomain.KeyRepeat = 2;
+  # system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
+
+  # Finder: show all filename extensions
+  # system.defaults.finder.AppleShowAllExtensions = true;
+
+  # (optional) Finder: show status bar
+  # system.defaults.finder.ShowStatusBar = true;
 
 }
