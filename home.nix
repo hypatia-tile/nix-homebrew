@@ -20,6 +20,83 @@
     alacritty
   ];
 
+  ######################
+  # tmux via Home Manager
+  ######################
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    baseIndex = 1;
+    clock24 = true;
+    historyLimit = 10000;
+    extraConfig = ''
+      unbind C-b
+      set -g prefix C-q
+
+      bind-key -n M-Up resize-pane -U 3
+      bind-key -n M-Down resize-pane -D 3
+      bind-key -n M-Left resize-pane -L 3
+      bind-key -n M-Right resize-pane -R 3
+    '';
+  };
+
+  ########################
+  # Alacritty via Home Manager
+  ########################
+  programs.alacritty = {
+    enable = true;
+    # This writes TOML/YAML config to $XDG_CONFIG_HOME/allactirry/alacritty.toml or .yml
+    # as documented in Home Manager. :contentReference[oaicite:0]{index=0}
+    settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
+        size = 11.0;
+      };
+      colors = {
+        primary = {
+          background = "0x282c34";
+          foreground = "0xabb2bf";
+        };
+        cursor = {
+          text = "0x282c34";
+          cursor = "0x528bff";
+        };
+        normal = {
+          black = "0x282c34";
+          red = "0xe06c75";
+          green = "0x98c379";
+          yellow = "0xe5c07b";
+          blue = "0x61afef";
+          magenta = "0xc678dd";
+          cyan = "0x56b6c2";
+          white = "0xabb2bf";
+        };
+      };
+
+      window = {
+        padding = {
+          x = 10;
+          y = 10;
+        };
+        dynamic_padding = true;
+        decorations = "Buttonless";
+        opacity = 0.75;
+        blur = false;
+        startup_mode = "Windowed";
+      };
+
+      scrolling = {
+        history = 100000;
+        multiplier = 3;
+      };
+    };
+  };
 
   # example: enable some HM-managed programs
   programs.git = {

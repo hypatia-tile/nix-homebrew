@@ -3,6 +3,10 @@
   # Turn off nix-darwin's own Nix management (only if we still using Determinate)
   nix.enable = false;
 
+  fonts.packages = [
+    pkgs.nerd-fonts.jetbrains-mono
+  ];
+
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
