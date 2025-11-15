@@ -46,7 +46,7 @@ $ nvim flake.nix                                                                
 $ sudo mv /etc/nix-darwin/configuration.nix ./                                                                                                                  main
 $ nvim configuration.nix                                                                                                                                        main
 $ sudo rm -rf /etc/nix-darwin                                                                                                                                   main
-$ sudo ln -s ~/github/nix-homebrew /etc/nix-darwin                                                                                                              main
+$ sudo ln -s ~/github/nix-darwin /etc/nix-darwin                                                                                                              main
 $ ls -l /etc/nix-darwin
 ```
 
