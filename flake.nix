@@ -17,29 +17,32 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, neovim-nightly-overlay, ... }:
+  outputs =
+    inputs@{ self
+    , nix-darwin
+    , nixpkgs
+    , home-manager
+    , neovim-nightly-overlay
+    , ...
+    }:
+    let
+      system = "aarch64-darwin";
+    in
     {
-      darwinConfigurations."Kazukis-MacBook-Air" = nix-darwin.lib.darwinSystem {
-        modules = [
-          ./configuration.nix
-          # Integrate Home Manager as a module
-          home-manager.darwinModules.home-manager
-          {
-            # Make neovim from neovim-nightly-overlay
-            nixpkgs.overlays = [
-              neovim-nightly-overlay.overlays.default
-            ];
-            # Configure Home Manager
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+      # darwinConfigurations."Kazukis-MacBook-Air" = nix-darwin.lib.darwinSystem {
+      # System (nix-darwin) configs
+      darwinConfigurations =
+        import ./nix/darwin {
+          inherit system nix-darwin home-manager;
+          neovimOverlay = neovim-nightly-overlay.overlays.default;
+        };
+      # optional: we *could* also define standalone home-manager
+      # homeConfigurations =
+      #   import ./nix/home {
+      #   inherit system home-manager nixpkgs;
+      #   neovimOverlay = neovim-nightly-overlay.overlays.default;
+      # };
 
-            home-manager.backupFileExtension = "hm-bak";
-
-            home-manager.users.kazukishinohara = import ./home.nix;
-          }
-        ];
-
-        specialArgs = { inherit inputs; };
-      };
+      specialArgs = { inherit inputs; };
     };
 }
