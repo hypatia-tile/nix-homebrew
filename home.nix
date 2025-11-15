@@ -15,8 +15,10 @@
     fd
     ripgrep
     bat
+    fzf
     neovim
     vim
+    tree
     htop
     # claude-code
   ];
