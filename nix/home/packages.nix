@@ -12,6 +12,11 @@
     vim
     tree
     htop
+    nodejs_22
+    deno
+    direnv
+    gh
+    lazygit
     # claude-code
   ];
 }
