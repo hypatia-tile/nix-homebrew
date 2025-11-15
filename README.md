@@ -46,10 +46,6 @@ $ nvim flake.nix                                                                
 $ sudo mv /etc/nix-darwin/configuration.nix ./                                                                                                                  main
 $ nvim configuration.nix                                                                                                                                        main
 $ sudo rm -rf /etc/nix-darwin                                                                                                                                   main
-$ sudo ln -l ~/github/nix-homebrew /etc/nix-darwin                                                                                                              main
-ln: illegal option -- l
-usage: ln [-s [-F] | -L | -P] [-f | -i] [-hnv] source_file [target_file]
-       ln [-s [-F] | -L | -P] [-f | -i] [-hnv] source_file ... target_dir
 $ sudo ln -s ~/github/nix-homebrew /etc/nix-darwin                                                                                                              main
 $ ls -l /etc/nix-darwin
 ```
