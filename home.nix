@@ -16,10 +16,7 @@
     ripgrep
     bat
     neovim
-    tmux
-    alacritty
     vim
-    git
     htop
     # claude-code
   ];
