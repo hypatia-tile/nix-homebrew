@@ -7,5 +7,8 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = [ "nix-command flakes" ];
 
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs = {
+    hostPlatform = "aarch64-darwin";
+    config.allowUnfree = true;
+  };
 }
