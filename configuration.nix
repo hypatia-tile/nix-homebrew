@@ -7,11 +7,7 @@
     pkgs.nerd-fonts.jetbrains-mono
   ];
 
-  environment.systemPackages = [
-    pkgs.vim
-    pkgs.git
-    pkgs.htop
-  ];
+  environment.systemPackages = [ ];
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = [ "nix-command flakes" ];
