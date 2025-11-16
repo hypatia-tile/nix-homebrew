@@ -16,6 +16,10 @@
     direnv
     gh
     lazygit
+    alejandra # Nix code formatter
+    statix # Nix linter
+    deadnix # Detets unused dependencies in Nix files
+    nil # Nix language server
     copilot-language-server
     claude-code
   ];
