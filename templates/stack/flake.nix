@@ -33,6 +33,8 @@
         shellHook = ''
           echo "Stack Haskell shell ready."
           echo "Available: stack, ghc, hlint, ormolu"
+          echo "GHC version in this shell:"
+          ghc --numeric-version || echo "ghc not found?"
         '';
       }
     );
