@@ -103,5 +103,7 @@
       enable = true;
       dotDir = "${config.xdg.configHome}/zsh";
     };
+
+    home-manager.enable = true;
   };
 }
