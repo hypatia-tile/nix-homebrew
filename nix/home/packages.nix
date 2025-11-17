@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # user-level packages (no sudo):
   home.packages = with pkgs; [
     eza
@@ -16,6 +14,7 @@
     direnv
     gh
     lazygit
+    nodejs_24
     alejandra # Nix code formatter
     statix # Nix linter
     deadnix # Detets unused dependencies in Nix files
