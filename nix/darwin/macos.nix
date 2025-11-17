@@ -1,9 +1,19 @@
-{ ... }:
-{
+{...}: {
   # Drop ocnfiguration Revision for now to keep it simple
   # (using `self` in an external module requires specialArgs).
   # system.configurationRevision = self.rev or self.dirtyRev or null;
   system.stateVersion = 6;
+  system.primaryUser = "kazukishinohara";
+
+  homebrew = {
+    enable = true;
+
+    brews = [
+      # "gmp" # dependency for ghc
+      "ghcup"
+      "rustup"
+    ];
+  };
 
   ########################################
   # macOS system settings via nix-darwin #

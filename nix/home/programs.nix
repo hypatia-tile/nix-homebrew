@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs = {
     ######################
     # tmux via Home Manager
@@ -101,6 +103,5 @@
       enable = true;
       dotDir = "${config.xdg.configHome}/zsh";
     };
-
   };
 }
