@@ -101,8 +101,48 @@
     zsh = {
       enable = true;
       dotDir = "${config.xdg.configHome}/zsh";
+
+      plugins = [
+        {
+          name = "zsh-autosuggestions";
+          src = pkgs.zsh-autosuggestions;
+        }
+        {
+          name = "zsh-syntax-highlighting";
+          src = pkgs.zsh-syntax-highlighting;
+        }
+      ];
+      enableCompletion = true;
+      # Prompt configuration
+      # promptInit = ''
+      #   autoload -Uz vcs_info
+      #   precmd() { vcs_info }
+      #   PROMPT='%F{cyan}%n%f@%m%F{yellow}%1~%f $${vcs_info_msg_0_} %# '
+      # '';
+
+      # Body of ~/.zshrc
+      # initExtra = ''
+      #   setopt autocd
+      #   setopt correct
+      #   setopt interactivecomments
+      #   setopt share_history
+      #   bindkey -v
+      #   alias ll='ls -lah'
+      # '';
+
+      # History behavior
+      # history = {
+      #   size = 10000;
+      #   save = 10000;
+      #   share = true;
+      #   ignoreDups = true;
+      #   ignoreSpace = true;
+      #   path = "${config.xdg.dataHome}/zsh/history";
+      # };
     };
 
     home-manager.enable = true;
   };
+
+  # users.defaultUserShell = pkgs.zsh;
 }
