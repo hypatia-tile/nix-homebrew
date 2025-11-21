@@ -17,32 +17,29 @@
     };
   };
 
-  outputs =
-    inputs@{ self
-    , nix-darwin
-    , nixpkgs
-    , home-manager
-    , neovim-nightly-overlay
-    , ...
-    }:
-    let
-      system = "aarch64-darwin";
-    in
-    {
-      # darwinConfigurations."Kazukis-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      # System (nix-darwin) configs
-      darwinConfigurations =
-        import ./nix/darwin {
-          inherit system nix-darwin home-manager;
-          neovimOverlay = neovim-nightly-overlay.overlays.default;
-        };
-      # optional: we *could* also define standalone home-manager
-      # homeConfigurations =
-      #   import ./nix/home {
-      #   inherit system home-manager nixpkgs;
-      #   neovimOverlay = neovim-nightly-overlay.overlays.default;
-      # };
-
-      specialArgs = { inherit inputs; };
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    nixpkgs,
+    home-manager,
+    neovim-nightly-overlay,
+    ...
+  }: let
+    system = "aarch64-darwin";
+  in {
+    # darwinConfigurations."Kazukis-MacBook-Air" = nix-darwin.lib.darwinSystem {
+    # System (nix-darwin) configs
+    darwinConfigurations = import ./nix/darwin {
+      inherit system nix-darwin home-manager;
+      neovimOverlay = neovim-nightly-overlay.overlays.default;
     };
+    # optional: we *could* also define standalone home-manager
+    # homeConfigurations =
+    #   import ./nix/home {
+    #   inherit system home-manager nixpkgs;
+    #   neovimOverlay = neovim-nightly-overlay.overlays.default;
+    # };
+
+    specialArgs = {inherit inputs;};
+  };
 }
