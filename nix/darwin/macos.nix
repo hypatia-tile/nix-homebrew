@@ -8,10 +8,11 @@
   homebrew = {
     enable = true;
 
+    casks = [
+      "aquaskk"
+    ];
     brews = [
-      # "gmp" # dependency for ghc
-      "ghcup"
-      "rustup"
+      "llvm"
     ];
   };
 
