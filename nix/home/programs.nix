@@ -4,9 +4,10 @@
   ...
 }: {
   programs = {
-    ######################
-    # tmux via Home Manager
-    ######################
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     tmux = {
       enable = true;
       # Use zsh as the default shell inside tmux
@@ -31,9 +32,7 @@
           bind-key -n M-Right resize-pane -R 3
       '';
     };
-    ########################
-    # Alacritty via Home Manager
-    ########################
+
     alacritty = {
       enable = true;
       # This writes TOML/YAML config to $XDG_CONFIG_HOME/allactirry/alacritty.toml or .yml

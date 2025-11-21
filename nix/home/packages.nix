@@ -11,7 +11,6 @@
     tree
     htop
     deno
-    direnv
     gh
     lazygit
     nodejs_24
